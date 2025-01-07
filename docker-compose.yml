@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./app/backend # Assurez-vous que ce chemin existe et pointe vers le bon dossier
+      context: . # Assurez-vous que ce chemin existe et pointe vers le bon dossier
       dockerfile: ./app/backend/Dockerfile
     ports:
       - "5001:5001"
@@ -12,7 +12,7 @@ services:
 
   frontend:
     build:
-      context: ./app/frontend  # Assurez-vous que ce chemin existe également
+      context: . # Assurez-vous que ce chemin existe également
       dockerfile: ./app/frontend/Dockerfile
     ports:
       - "3000:3000"
