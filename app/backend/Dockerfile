@@ -2,10 +2,10 @@
 FROM python:3.10-slim
 
 # Définir le répertoire de travail
-WORKDIR /app
+WORKDIR ./app
 
 # Copier les fichiers nécessaires
-COPY . /app
+COPY . ./app
 
 # Mettre à jour pip
 RUN pip install --upgrade pip
