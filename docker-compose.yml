@@ -12,7 +12,7 @@ services:
 
   frontend:
     build:
-      context: /app/frontend  # Assurez-vous que ce chemin existe également
-      dockerfile: Dockerfile
+      context: .  # Assurez-vous que ce chemin existe également
+      dockerfile: Dockerfile-test-fe
     ports:
       - "3000:3000"
