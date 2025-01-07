@@ -3,8 +3,8 @@ version: '3.8'
 services:
   backend:
     build:
-      context: . # Assurez-vous que ce chemin existe et pointe vers le bon dossier
-      dockerfile: Dockerfile-test
+      context: ./app/backend # Assurez-vous que ce chemin existe et pointe vers le bon dossier
+      dockerfile: ./app/backend/Dockerfile
     ports:
       - "5001:5001"
     environment:
@@ -12,7 +12,7 @@ services:
 
   frontend:
     build:
-      context: .  # Assurez-vous que ce chemin existe également
-      dockerfile: Dockerfile-test-fe
+      context: ./app/frontend  # Assurez-vous que ce chemin existe également
+      dockerfile: ./app/frontend/Dockerfile
     ports:
       - "3000:3000"
