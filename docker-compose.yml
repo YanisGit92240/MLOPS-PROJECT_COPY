@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./app/backend
+    ports:
+      - "5001:5001"
+    volumes:
+      - /Users/yanisbestaoui/Downloads/MLOPS-Project/app/backend:/app
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    build:
+      context: ./app/frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - /Users/yanisbestaoui/Downloads/MLOPS-Project/app/frontend:/app
