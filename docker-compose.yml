@@ -16,5 +16,3 @@ services:
       context: ./app/frontend/
     ports:
       - "3000:3000"
-    volumes:
-      - /Users/yanisbestaoui/Downloads/MLOPS-Project/app/frontend:/app
