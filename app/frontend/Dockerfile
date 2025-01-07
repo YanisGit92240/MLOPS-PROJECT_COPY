@@ -2,7 +2,7 @@
 FROM node:18 AS build
 
 # Définir le répertoire de travail
-WORKDIR /app
+WORKDIR ./app
 
 # Copier les fichiers package.json et package-lock.json pour installer les dépendances
 COPY package.json package-lock.json ./
