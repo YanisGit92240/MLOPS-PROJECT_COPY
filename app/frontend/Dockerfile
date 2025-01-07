@@ -1,4 +1,4 @@
-# Étape 1 : Utiliser une image Node.js pour la construction
+# Étape 1 : Construire l'application avec Node.js
 FROM node:18 AS build
 
 # Définir le répertoire de travail
@@ -10,27 +10,20 @@ COPY package.json package-lock.json ./
 # Installer les dépendances
 RUN npm install
 
-# Copier tous les fichiers du projet dans le container
+# Copier tout le projet dans le conteneur
 COPY . .
 
-# Construire le frontend pour la production
+# Construire le projet pour la production
 RUN npm run build
 
-# Étape 2 : Utiliser une image plus légère pour servir les fichiers statiques
-FROM node:18 AS serve
+# Étape 2 : Utiliser une image légère pour servir les fichiers
+FROM nginx:alpine AS serve
 
-# Installer `serve` pour servir les fichiers
-RUN npm install -g serve
+# Copier le dossier `dist` généré dans l'étape précédente vers le dossier par défaut de Nginx
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Définir le répertoire de travail
-WORKDIR /app
-
-# Copier le dossier `dist` généré dans l'étape précédente
-COPY --from=build /app/dist ./dist
-
-# Exposer le port 80 pour servir le frontend
+# Exposer le port 80 (par défaut pour Nginx)
 EXPOSE 80
 
-# Commande pour démarrer le serveur
-CMD ["serve", "-s", "dist", "-l", "3000"]
-
+# Commande pour démarrer Nginx
+CMD ["nginx", "-g", "daemon off;"]
