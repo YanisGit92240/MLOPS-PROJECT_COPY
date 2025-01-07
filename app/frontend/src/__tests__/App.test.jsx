@@ -4,6 +4,6 @@ import App from '../App';
 
 test('renders frontend message', () => {
   render(<App />);
-  const headerElement = screen.getByText(/Frontend Connected to Backend/i);
+  const headerElement = screen.getByText(/Waste Recognition Application/i);
   expect(headerElement).toBeInTheDocument();
 });
