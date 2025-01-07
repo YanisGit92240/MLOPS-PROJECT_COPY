@@ -1,0 +1,12 @@
+{
+  "services": [
+    {
+      "name": "backend",
+      "path": "app/backend"
+    },
+    {
+      "name": "frontend",
+      "path": "app/frontend"
+    }
+  ]
+}
