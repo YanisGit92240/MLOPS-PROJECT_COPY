@@ -3,8 +3,8 @@ version: '3.8'
 services:
   backend:
     build:
-      context: /app/backend  # Assurez-vous que ce chemin existe et pointe vers le bon dossier
-      dockerfile: Dockerfile
+      context: . # Assurez-vous que ce chemin existe et pointe vers le bon dossier
+      dockerfile: Dockerfile-test
     ports:
       - "5001:5001"
     environment:
