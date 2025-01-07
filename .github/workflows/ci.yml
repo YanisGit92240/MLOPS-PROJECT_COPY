@@ -10,23 +10,40 @@ on:
 
 jobs:
   test-backend:
-    runs-on: ubuntu-latest
+    name: Test Backend
+    runs-on: ubuntu-22.04
     steps:
+      # Étape 1 : Cloner le dépôt
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Étape 2 : Configurer Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: 3.10.9
 
+      # Étape 3 : Vérifier la version de Python et pip
+      - name: Check Python and pip versions
+        run: |
+          python --version
+          python -m pip --version
+          which python
+
+      # Étape 4 : Mettre à jour pip et setuptools
       - name: Install dependencies
         run: |
           cd app/backend
           python -m venv venv
           source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
 
+      # Étape 5 : Ajouter le chemin PYTHONPATH
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/app/backend" >> $GITHUB_ENV
+
+      # Étape 6 : Exécuter les tests backend
       - name: Run backend tests
         run: |
           cd app/backend
@@ -34,16 +51,20 @@ jobs:
           pytest
 
   test-frontend:
-    runs-on: ubuntu-latest
+    name: Test Frontend
+    runs-on: ubuntu-22.04
     steps:
+      # Étape 1 : Cloner le dépôt
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Étape 2 : Configurer Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
+      # Étape 3 : Installer les dépendances et exécuter les tests
       - name: Install dependencies and run tests
         run: |
           cd app/frontend
