@@ -1,5 +1,5 @@
 #from app import app
-from app.backend import app
+from app.backend.app import app
 # Test 1: Vérifier si l'API racine répond avec un statut 200
 def test_home_status_code():
     with app.test_client() as client:
