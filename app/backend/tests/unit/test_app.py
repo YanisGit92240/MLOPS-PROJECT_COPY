@@ -18,4 +18,3 @@ def test_404_error():
         response = client.get('/nonexistent')
         assert response.status_code == 404
 
-
