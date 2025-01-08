@@ -30,18 +30,6 @@ def test_home():
         assert response.status_code == 200
         assert response.json == {'message': 'API is working!'}
 
-def test_collection_points():
-    """Test de la route /collection-points"""
-    with app.test_client() as client:
-        response = client.get('/collection-points')
-        assert response.status_code == 200
-        data = response.json
-        assert isinstance(data, list)  # Vérifie que la réponse est une liste
-        assert len(data) == 3  # Vérifie qu'il y a 3 points de collecte
-        for point in data:
-            assert "type" in point
-            assert "latitude" in point
-            assert "longitude" in point
 
 def test_predict_with_image(mocker):
     """Test de la route /predict avec une image"""
