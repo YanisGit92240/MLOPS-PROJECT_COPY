@@ -21,7 +21,7 @@ def test_404_error():
 # Tests d'intégration
 import io
 import os
-from app import app
+from app.backend import app
 
 def test_home():
     """Test de la route racine (/)"""
