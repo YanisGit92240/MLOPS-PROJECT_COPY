@@ -8,14 +8,12 @@ test('renders frontend message', () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-
 test('renders the Upload and Predict button', () => {
   render(<App />);
-  const buttonElement = screen.getByText(/Upload and Predict/i);
+  const buttonElement = screen.getByRole('button', { name: /Upload and Predict/i });
   expect(buttonElement).toBeInTheDocument();
   expect(buttonElement).toBeEnabled();
 });
-
 
 test('displays loading message while processing prediction', async () => {
   render(<App />);
