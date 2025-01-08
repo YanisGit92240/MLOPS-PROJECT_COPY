@@ -3,7 +3,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
 from app.backend.app import app
 
-from app import app
+#from app import app
 
 # Test 1: Vérifier si l'API racine répond avec un statut 200
 def test_home_status_code():
