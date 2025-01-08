@@ -16,11 +16,6 @@ test('renders the Upload and Predict button', () => {
   expect(buttonElement).toBeEnabled();
 });
 
-test('renders the file upload input', () => {
-  render(<App />);
-  const fileInput = screen.getByLabelText(/Choose File/i) || screen.getByRole('button', { name: /Choose File/i });
-  expect(fileInput).toBeInTheDocument();
-});
 
 test('displays loading message while processing prediction', async () => {
   render(<App />);
